@@ -83,6 +83,22 @@ span {
     .card {
         margin: 5% 3%;
     }
+
+    .img-banner {
+        height: auto; 
+        width: auto; 
+        max-width: 25px; 
+        max-height: 25px;
+    }
+
+    .absolute h1{
+        font-size: 25px;
+        margin: 3% 0 3% !important;
+    }
+
+    div.absolute{
+        padding: 5% 0 6% !important;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
@@ -169,6 +185,7 @@ span {
 
 .btn-game:hover {
     content: url("./assets/icon-x-outline-hover.svg");
+    background-color: #1F3641;
 }
 
 .btn-turn {

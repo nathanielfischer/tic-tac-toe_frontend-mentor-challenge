@@ -24,7 +24,7 @@ const winningCombinations = [
 $(".btn-game").click(function (event) {
     const field = event.currentTarget.value;
     //check if field already is already set
-    if ($(".img-game").eq(field).hasClass("fieldSet")) {
+    if ($(".img-game").eq(field).hasClass("fieldSet") || gameOver) {
         console.error("Can't select this field!");
     } else {
         nextTurn(field);
@@ -69,7 +69,7 @@ $(".btn-game").hover(
         const field = event.currentTarget.value;
 
         //only show the outlined icon, if the field is empty
-        if ($(".img-game").eq(field).hasClass("hidden")) {
+        if ($(".img-game").eq(field).hasClass("hidden") && !gameOver) {
             $(".img-game").eq(field).attr("src", "./assets/icon-" + turn + "-outline-hover.svg");
             $(".img-game").eq(field).removeClass("hidden");
         }
@@ -78,7 +78,7 @@ $(".btn-game").hover(
         const field = event.currentTarget.value;
         
         if($(".img-game").eq(field).hasClass("fieldSet")){
-            
+            //nothing
         }else{
             $(".img-game").eq(field).addClass("hidden");
         }

@@ -4,6 +4,7 @@ let gameMode = "";
 let playerO = "";
 let playerX = "";
 let gameOver = false;
+let cpusTurn = false;
 const playerArrayX = [];
 const playerArrayO = [];
 
@@ -24,7 +25,7 @@ const winningCombinations = [
 $(".btn-game").click(function (event) {
     const field = event.currentTarget.value;
     //check if field already is already set
-    if ($(".img-game").eq(field).hasClass("fieldSet") || gameOver) {
+    if ($(".img-game").eq(field).hasClass("fieldSet") || gameOver || cpusTurn) {
         console.error("Can't select this field!");
     } else {
         nextTurn(field);
@@ -68,8 +69,8 @@ $(".btn-game").hover(
     function (event) {
         const field = event.currentTarget.value;
 
-        //only show the outlined icon, if the field is empty
-        if ($(".img-game").eq(field).hasClass("hidden") && !gameOver) {
+        //only show the outlined icon, if the field is empty & game not over & not CPU's turn
+        if ($(".img-game").eq(field).hasClass("hidden") && !gameOver && !cpusTurn) {
             $(".img-game").eq(field).attr("src", "./assets/icon-" + turn + "-outline-hover.svg");
             $(".img-game").eq(field).removeClass("hidden");
         }
@@ -312,11 +313,13 @@ function initalizeGame() {
 // --------------- CPU Movement ---------------
 
 function moveCpu() {
+    cpusTurn = true;
     const field = Math.floor(Math.random() * (8 - 0 + 1) + 0);
 
     if ($(".img-game").eq(field).hasClass("hidden")) {
         setTimeout(() => {
             nextTurn(field);
+            cpusTurn = false;
         }, 500)
     } else {
         console.error("CPU can't select this field!");

@@ -177,6 +177,7 @@ function updateUiAfterGame(icon) {
 
 function toggleBanner() {
     $(".absolute").toggleClass("hidden");
+    $(".container").toggleClass("darker-span");
 }
 
 function removeBannerStyling() {

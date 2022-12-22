@@ -55,6 +55,9 @@ span {
 
 */
 
+.darker-span {
+    filter: brightness(30%);
+  }
 
 /* ----------------- IDs ----------------- */
 
@@ -93,11 +96,12 @@ span {
 
     .absolute h1{
         font-size: 25px;
-        margin: 3% 0 3% !important;
+        margin: 4% 0 4% !important;
     }
 
     div.absolute{
-        padding: 5% 0 6% !important;
+        padding: 8% 0 9% !important;
+        top: 35%;
     }
 }
 

@@ -100,9 +100,11 @@ span {
     }
 
     div.absolute{
-        padding: 8% 0 9% !important;
-        top: 35%;
+        padding: 8% 0 10% !important;
+        top: 40%;
     }
+
+    
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
@@ -203,6 +205,9 @@ span {
     cursor: auto;
 }
 
+.span-turn{
+    margin-right: 7px;
+}
 
 
 /* ----------------- .. ----------------- */

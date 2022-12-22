@@ -1,0 +1,364 @@
+h1,
+h2,
+h3,
+h4 {
+    color: #A8BFC9;
+    font: "Outfit";
+    font-weight: bold;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: 40px;
+    font-kerning: 2.5px;
+}
+
+h2 {
+    color: #1A2A33;
+    font-size: 24px;
+    font-kerning: 1.5px;
+}
+
+h3 {
+    color: black;
+    font-size: 20px;
+    font-kerning: 1.25px;
+}
+
+h4 {
+    font-size: 16px;
+    font-kerning: 1px;
+}
+
+body {
+    background-color: #1A2A33;
+    color: #A8BFC9;
+    font-size: 14px;
+    font-kerning: 0.8px;
+    font: "Outfit";
+    font-weight: medium;
+    text-transform: uppercase;
+}
+
+p,
+span {
+    color: #A8BFC9;
+    margin-bottom: 0;
+}
+
+
+/* ----------------- Colors -----------------
+
+#1A2A33 Dark Navy 
+#1F3641 Semi Dark Navy
+
+*/
+
+
+/* ----------------- IDs ----------------- */
+
+#logo {
+    margin-bottom: 5%;
+}
+
+
+/* ----------------- Container, Cards ----------------- */
+
+@media (max-width:575.98px) {
+    .container {
+        --bs-gutter-x: 0;
+    }
+}
+
+.card {
+    border-radius: 1rem;
+    border-width: 0;
+    background-color: inherit;
+    margin: 5% 32%;
+    text-align: center;
+}
+
+@media (max-width:767.98px) {
+    .card {
+        margin: 5% 3%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .card {
+        margin: 5% 20%;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .card {
+        margin: 5% 25%;
+    }
+}
+
+.card-bg {
+    background-color: #1F3641;
+    border-radius: 1rem;
+    box-shadow: 0px 6px 0px RGB(0, 0, 0, 0.2);
+}
+
+.card-body {
+    padding: 5% 0;
+    margin: 3% 0;
+}
+
+
+
+/* ----------------- Buttons ----------------- */
+
+.btn {
+    border: 0px !important;
+    border-radius: 0.8rem;
+    margin-bottom: 6%;
+}
+
+.btn-lg {
+    padding: 1rem 4rem;
+    width: 100%;
+}
+
+.btn-yellow {
+    background-color: #F2B137;
+    /* Light Yellow */
+    box-shadow: 0px 6px 0px RGB(242, 177, 55, 0.8);
+}
+
+.btn-yellow:hover {
+    background-color: #FFC860;
+    /* Light Yellow Hover*/
+}
+
+.btn-blue {
+    background-color: #31C3BD;
+    /* Light Blue */
+    box-shadow: 0px 6px 0px RGB(49, 195, 189, 0.8);
+}
+
+.btn-blue:hover {
+    background-color: #65E9E4;
+    /* Light Blue Hover*/
+}
+
+.btn-silver {
+    background-color: #A8BFC9;
+    /* Silver */
+    box-shadow: 0px 6px 0px RGB(168, 191, 201, 0.8);
+}
+
+.btn-silver:hover {
+    background-color: #DBE8ED;
+    /* Light Silver Hover*/
+}
+
+.btn-semi-dark {
+    background-color: #1F3641;
+    /* Semi Dark */
+    box-shadow: 0px 6px 0px RGB(0, 0, 0, 0.3);
+}
+
+.btn-game {
+    height: 8rem;
+    width: 4rem;
+}
+
+.btn-game:hover {
+    content: url("./assets/icon-x-outline-hover.svg");
+}
+
+.btn-turn {
+    border-radius: 0.5rem;
+    box-shadow: 0px 2px 0px RGB(0, 0, 0, 0.3);
+    padding: 3% 0 0 0 !important
+}
+
+.btn-turn:hover {
+    background-color: #1F3641;
+    cursor: auto;
+}
+
+
+
+/* ----------------- .. ----------------- */
+
+
+.stats-card {
+    border-radius: 0.8rem;
+    padding: 6% 0;
+    width: 100%;
+}
+
+.stats-card p {
+    color: #1A2A33 !important;
+}
+
+.bg-blue {
+    background-color: #31C3BD;
+}
+
+.bg-silver {
+    background-color: #A8BFC9;
+}
+
+.bg-yellow {
+    background-color: #F2B137;
+}
+
+.font-blue {
+    color: #31C3BD !important;
+}
+
+.font-silver {
+    color: #A8BFC9 !important;
+}
+
+.font-yellow {
+    color: #F2B137 !important;
+}
+
+
+
+.game {
+    display: none;
+}
+
+.img-game {
+    position: relative;
+    right: 30px;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+
+.row {
+    margin-bottom: 4%;
+}
+
+
+
+/* ----------------- Banner Overlay ----------------- */
+
+
+div.absolute {
+    position: absolute;
+    top: 30%;
+    width: 100%;
+    padding: 2% 0 3%;
+    background-color: #1F3641;
+    text-align: center;
+    z-index: 999;
+}
+
+.absolute h1 {
+    margin: 1% 0 1%;
+}
+
+.absolute h4 {
+    color: #1A2A33;
+}
+
+
+
+.absolute .btn-md {
+    padding: 10px;
+    margin: 0 5px;
+}
+
+.img-banner {
+    position: relative;
+    bottom: 3px;
+    right: 10px;
+}
+
+
+
+
+/* ----------------- Toggle Switch ----------------- */
+
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 24rem;
+    height: 4.5rem;
+    margin: 5% 0;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #A8BFC9;
+    /*silver color*/
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: url("./assets/icon-x-outline.svg");
+    height: 3.5rem;
+    width: 11rem;
+    left: 0.5rem;
+    bottom: 0.5rem;
+    background-color: #1A2A33;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #1A2A33;
+    /*dark color*/
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+    /* content: url(<img src="./assets/icon-x-outline.svg" alt="Icon X"  width="90" height="40">); */
+    content: url("./assets/icon-o-outline.svg");
+
+    -webkit-transform: translateX(12rem);
+    -ms-transform: translateX(12rem);
+    transform: translateX(12rem);
+    background-color: #A8BFC9;
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 10px;
+}
+
+.slider.round:before {
+    border-radius: 10px;
+}
+
+
+
+/* ----------------- Attribution ----------------- */
+.attribution {
+    margin-top: 5%;
+    font-size: 11px;
+    text-align: center;
+}
+
+.attribution a {
+    color: #DBE8ED;
+}

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <title>Frontend Mentor | Tic Tac Toe</title>
+</head>
+
+<body>
+
+  <div class="container">
+    <!-- New game menu start -->
+    <div class="card new-game-menu">
+      <div id="logo">
+        <img src="./assets/logo.svg" alt="Logo" width="90" height="40">
+      </div>
+      <div class="card-body card-bg">
+        <h4>Pick player 1's mark</h4>
+
+        <label class="switch">
+          <input type="checkbox" id="chooseIcon">
+          <span class="slider round">
+          </span>
+        </label>
+
+        <p>Remember: X goes first</p>
+      </div>
+      <div class="card-body">
+        <button type="button" class="btn btn-lg btn-yellow new-game-cpu">
+          <h3>New Game (vs CPU)</h3>
+        </button>
+        <button type="button" class="btn btn-lg btn-blue new-game-player">
+          <h3>New Game (vs player)</h3>
+        </button>
+      </div>
+    </div>
+    <!-- New game menu end -->
+
+
+
+    <!-- Game board start -->
+    <div class="card game">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-4">
+            <img src="./assets/logo.svg" alt="Logo" width="60" height="27">
+          </div>
+          <div class="col-4">
+            <button type="button" class="btn btn-lg btn-semi-dark btn-turn">
+              <img class="img-turn" src="./assets/icon-x-outline.svg" alt="Icon X" width="36" height="36">
+              <span> TURN</span>
+            </button>
+          </div>
+          <div class="col-4">
+            <button type="button" class="btn btn-md btn-silver btn-restart"><img src="./assets/icon-restart.svg" alt="Icon restart"
+                width="15" height="15"></button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-4">
+            <button type="button" class="btn btn-lg btn-semi-dark btn-game" value="0">
+              <img class="img-game hidden" src="./assets/icon-x.svg" alt="Icon X" width="64" height="64">
+            </button>
+          </div>
+          <div class="col-4">
+            <button type="button" class="btn btn-lg btn-semi-dark btn-game" value="1">
+              <img class="img-game hidden" src="./assets/icon-o.svg" alt="Icon X" width="64" height="64">
+            </button>
+          </div>
+          <div class="col-4">
+            <button type="button" class="btn btn-lg btn-semi-dark btn-game" value="2">
+              <img class="img-game hidden" src="./assets/icon-o.svg" alt="Icon X" width="64" height="64">
+            </button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-4">
+            <button type="button" class="btn btn-lg btn-semi-dark btn-game" value="3">
+              <img class="img-game hidden" src="./assets/icon-x.svg" alt="Icon X" width="64" height="64">
+            </button>
+          </div>
+          <div class="col-4">
+            <button type="button" class="btn btn-lg btn-semi-dark btn-game" value="4">
+              <img class="img-game hidden" src="./assets/icon-o.svg" alt="Icon X" width="64" height="64">
+            </button>
+          </div>
+          <div class="col-4">
+            <button type="button" class="btn btn-lg btn-semi-dark btn-game" value="5">
+              <img class="img-game hidden" src="./assets/icon-o.svg" alt="Icon X" width="64" height="64">
+            </button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-4">
+            <button type="button" class="btn btn-lg btn-semi-dark btn-game" value="6">
+              <img class="img-game hidden" src="./assets/icon-x.svg" alt="Icon X" width="64" height="64">
+            </button>
+          </div>
+          <div class="col-4">
+            <button type="button" class="btn btn-lg btn-semi-dark btn-game" value="7">
+              <img class="img-game hidden" src="./assets/icon-o.svg" alt="Icon X" width="64" height="64">
+            </button>
+          </div>
+          <div class="col-4">
+            <button type="button" class="btn btn-lg btn-semi-dark btn-game" value="8">
+              <img class="img-game hidden" src="./assets/icon-o.svg" alt="Icon X" width="64" height="64">
+            </button>
+          </div>
+        </div>
+
+        <!-- stats row -->
+        <div class="row">
+          <div class="col-4">
+            <div class="stats-card bg-blue">
+              <p>X (YOU)</p>
+              <h2>0</h2>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="stats-card bg-silver">
+              <p>TIES</p>
+              <h2>0</h2>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="stats-card bg-yellow">
+              <p>O (CPU)</p>
+              <h2>0</h2>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute hidden">
+    <h4 class="font-silver line1">YOU WON!</h4>
+    <h1>
+      <img class="img-banner" src="./assets/icon-o.svg" alt="Icon X" width="64" height="64">
+      <span class="font-yellow span-banner">TAKES THE ROUND</span>
+    </h1>
+    <button type="button" class="btn btn-md btn-silver btn-quit">
+      <h4>QUIT</h4>
+    </button>
+    <button type="button" class="btn btn-md btn-yellow btn-next-round">
+      <h4>NEXT ROUND</h4>
+    </button>
+  </div>
+  <!-- Game board end -->
+
+
+
+  <!-- Attribution -->
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="https://github.com/nathanielfischer" target="_blank">Nathaniel</a>.
+  </div>
+
+  <!-- Script imports -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="index.js" charset="utf-8"></script>
+
+</body>
+
+</html>

@@ -47,6 +47,10 @@ Users should be able to:
 
 I got a better understanding of using jQuery and how to manipulate the DOM. 
 
+I learned a lot about designing a custom toggle switch and making it responsive.
+
+Furthermore I learned a little more about SVGs and how they can be positioned.
+
 ## Author
 
 - Github - [Nathaniel Fischer](https://github.com/nathanielfischer)

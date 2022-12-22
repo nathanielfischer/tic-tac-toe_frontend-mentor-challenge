@@ -303,7 +303,8 @@ div.absolute {
 .switch {
     position: relative;
     display: inline-block;
-    width: 24rem;
+    width: 90%;   
+    /* width: 24rem; */
     height: 4.5rem;
     margin: 5% 0;
 }
@@ -330,9 +331,11 @@ div.absolute {
 .slider:before {
     position: absolute;
     content: url("./assets/icon-x-outline.svg");
-    height: 3.5rem;
-    width: 11rem;
-    left: 0.5rem;
+    height: 80%;
+    width: 48%;
+    left: 2%;
+    /* width: 11rem;
+    left: 0.5rem; */
     bottom: 0.5rem;
     background-color: #1A2A33;
     -webkit-transition: .4s;
@@ -352,9 +355,9 @@ input:checked+.slider:before {
     /* content: url(<img src="./assets/icon-x-outline.svg" alt="Icon X"  width="90" height="40">); */
     content: url("./assets/icon-o-outline.svg");
 
-    -webkit-transform: translateX(12rem);
-    -ms-transform: translateX(12rem);
-    transform: translateX(12rem);
+    -webkit-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    transform: translateX(100%);
     background-color: #A8BFC9;
 }
 

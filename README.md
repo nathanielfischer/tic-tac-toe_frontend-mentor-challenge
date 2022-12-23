@@ -45,11 +45,10 @@ Users should be able to:
 
 ### What I learned
 
-I got a better understanding of using jQuery and how to manipulate the DOM. 
-
-I learned a lot about designing a custom toggle switch and making it responsive.
-
-Furthermore I learned a little more about SVGs and how they can be positioned.
+- Using jQuery and how to manipulate the DOM. 
+- Setting and getting Cookies
+- Designing a custom toggle switch in detail and making it responsive.
+- I learned a little more about SVGs and how they work.
 
 ## Author
 

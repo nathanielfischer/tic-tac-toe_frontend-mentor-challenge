@@ -5,6 +5,9 @@ let playerO = "";
 let playerX = "";
 let gameOver = false;
 let cpusTurn = false;
+let statX = 0;
+let statO = 0;
+let statTie = 0;
 const playerArrayX = [];
 const playerArrayO = [];
 
@@ -19,9 +22,8 @@ const winningCombinations = [
     [2, 5, 8]
 ];
 
-setCookie("gameState", "player1=", 2);
 
-// --------------- "Event Listener" ---------------
+// --------------- button clicks ---------------
 
 $(".btn-game").click(function (event) {
     const field = event.currentTarget.value;
@@ -31,7 +33,6 @@ $(".btn-game").click(function (event) {
     } else {
         nextTurn(field);
         checkWhoIsNext();
-        console.log(getCookie("gameState"));
     }
 
 });
@@ -127,9 +128,8 @@ function updateUiAfterGame(icon) {
     // line2Text = $(".span-banner")[0].innerText;
 
     if (icon === "x") {
-        let currentStat = Number($(".bg-blue h2")[0].textContent);
-        currentStat += 1;
-        $(".bg-blue h2")[0].textContent = currentStat;
+        statX += 1;
+        $(".bg-blue h2")[0].textContent = statX;
         //Banner X won
         removeBannerStyling()
         $(".img-banner").attr("src", "./assets/icon-x.svg");
@@ -145,9 +145,8 @@ function updateUiAfterGame(icon) {
         }
 
     } else if (icon === "o") {
-        let currentStat = Number($(".bg-yellow h2")[0].textContent);
-        currentStat += 1;
-        $(".bg-yellow h2")[0].textContent = currentStat;
+        statO += 1;
+        $(".bg-yellow h2")[0].textContent = statO;
         //Banner O won
         removeBannerStyling()
         $(".img-banner").attr("src", "./assets/icon-o.svg");
@@ -163,9 +162,8 @@ function updateUiAfterGame(icon) {
         }
 
     } else {
-        let currentStat = Number($(".bg-silver h2")[0].textContent);
-        currentStat += 1;
-        $(".bg-silver h2")[0].textContent = currentStat;
+        statTie += 1;
+        $(".bg-silver h2")[0].textContent = statTie;
         //Banner game tied
         removeBannerStyling()
         console.log("tied");
@@ -280,34 +278,40 @@ function nextRound() {
 
 
 function initalizeGame() {
-    if ($("#chooseIcon")[0].checked) {
-        playerO = "Player 1";
-        if (gameMode === "CPU") {
-            playerX = "CPU";
-            $(".stats-card p")[0].innerText = "X (CPU)";
-            $(".stats-card p")[2].innerText = "O (YOU)";
-        } else {
-            playerX = "Player 2";
-            $(".stats-card p")[0].innerText = "X (Player 2)";
-            $(".stats-card p")[2].innerText = "O (Player 1)";
-        }
+    //if cookie is set, reload game - else initalize new game
+    if (getCookie("gameMode")) {
+        restoreGameFromCookie();
     } else {
-        playerX = "Player 1";
-        if (gameMode === "CPU") {
-            playerO = "CPU";
-            $(".stats-card p")[0].innerText = "X (YOU)";
-            $(".stats-card p")[2].innerText = "O (CPU)";
+        if ($("#chooseIcon")[0].checked) {
+            playerO = "Player 1";
+            if (gameMode === "CPU") {
+                playerX = "CPU";
+                $(".stats-card p")[0].innerText = "X (CPU)";
+                $(".stats-card p")[2].innerText = "O (YOU)";
+            } else {
+                playerX = "Player 2";
+                $(".stats-card p")[0].innerText = "X (Player 2)";
+                $(".stats-card p")[2].innerText = "O (Player 1)";
+            }
         } else {
-            playerO = "Player 2";
-            $(".stats-card p")[0].innerText = "X (Player 1)";
-            $(".stats-card p")[2].innerText = "O (Player 2)";
+            playerX = "Player 1";
+            if (gameMode === "CPU") {
+                playerO = "CPU";
+                $(".stats-card p")[0].innerText = "X (YOU)";
+                $(".stats-card p")[2].innerText = "O (CPU)";
+            } else {
+                playerO = "Player 2";
+                $(".stats-card p")[0].innerText = "X (Player 1)";
+                $(".stats-card p")[2].innerText = "O (Player 2)";
+            }
         }
     }
 
-    console.log("x: " + playerX + " & " + "o: " + playerO);
+    //hide menu and display game field
     $(".new-game-menu").hide();
     $(".game").css("display", "flex");
 
+    //sees who makes the first turn and starts the game
     checkWhoIsNext();
 }
 
@@ -358,7 +362,8 @@ function setCookie(cname, cvalue, exdays) {
 
 function getCookie(cname) {
     let name = cname + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
+    // let decodedCookie = decodeURIComponent(document.cookie);
+    let decodedCookie = "";
     let ca = decodedCookie.split(';');
     for (let i = 0; i < ca.length; i++) {
         let c = ca[i];
@@ -370,4 +375,22 @@ function getCookie(cname) {
         }
     }
     return "";
+}
+
+function saveGameToCookie() {
+    setCookie("gameMode", gameMode, 7);
+    setCookie("playerO", playerO, 7);
+    setCookie("playerX", playerX, 7);
+    setCookie("statX", statX, 7);
+    setCookie("statO", statO, 7);
+    setCookie("statTie", statTie, 7);
+}
+
+function restoreGameFromCookie() {
+    gameMode = getCookie("gameMode");
+    playerO = getCookie("playerO");
+    playerX = getCookie("playerX");
+    statX = getCookie("statX");
+    statO = getCookie("statO");
+    statTie = getCookie("statTie");
 }

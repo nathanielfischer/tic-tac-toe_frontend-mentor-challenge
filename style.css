@@ -88,6 +88,10 @@ span {
         margin: 5% 3%;
     }
 
+    .card-body{
+        padding: 5% 2% !important;
+    }
+
     .img-banner {
         height: auto;
         width: auto;
@@ -105,8 +109,19 @@ span {
         top: 45%;
     }
 
+    .col-4{
+        padding: 0 2%;
+    }
+
 
 }
+
+@media (min-width: 768px)  {
+    .col-4{
+        margin-top: 2%;
+    }
+}
+
 
 @media (min-width: 768px) and (max-width: 991.98px) {
     .card {

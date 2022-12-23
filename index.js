@@ -263,15 +263,24 @@ function checkIfWon() {
 }
 
 
+/**
+ * @param  {string} icon x or o or empty if game tied
+ * sets the game state to over and updates the banner and makes it visible
+ * sets cookie of the current game state
+ */
 function gameEnd(icon) {
     gameOver = true;
     updateUiAfterGame(icon);
     toggleBanner();
+    saveGameToCookie();
     // restartGame();
 }
 
+/**
+ * Starts the new round
+ * hides the Banner
+ */
 function nextRound() {
-    saveGameToCookie();
     restartGame();
     toggleBanner();
     checkWhoIsNext();
@@ -363,8 +372,7 @@ function setCookie(cname, cvalue, exdays) {
 
 function getCookie(cname) {
     let name = cname + "=";
-    // let decodedCookie = decodeURIComponent(document.cookie);
-    let decodedCookie = "";
+    let decodedCookie = decodeURIComponent(document.cookie);
     let ca = decodedCookie.split(';');
     for (let i = 0; i < ca.length; i++) {
         let c = ca[i];

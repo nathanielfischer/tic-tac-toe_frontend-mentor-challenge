@@ -92,6 +92,10 @@ span {
         padding: 5% 2% !important;
     }
 
+    .row {
+        margin-bottom: 6%;
+    }
+
     .img-banner {
         height: auto;
         width: auto;

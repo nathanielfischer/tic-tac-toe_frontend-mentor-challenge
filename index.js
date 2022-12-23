@@ -22,6 +22,12 @@ const winningCombinations = [
     [2, 5, 8]
 ];
 
+//check if cookie is set
+if (getCookie("gameMode")) {
+    console.log("Cookie found! Restoring game state.");
+    initalizeGame(true);
+}
+
 
 // --------------- button clicks ---------------
 
@@ -287,9 +293,12 @@ function nextRound() {
 }
 
 
-function initalizeGame() {
+/**
+ * @param  {boolean} cookie true if cookie is set
+ */
+function initalizeGame(cookie) {
     //if cookie is set, reload game - else initalize new game
-    if (getCookie("gameMode")) {
+    if (cookie) {
         restoreGameFromCookie();
     } else {
         if ($("#chooseIcon")[0].checked) {

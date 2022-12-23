@@ -92,8 +92,13 @@ span {
         padding: 5% 2% !important;
     }
 
+    .card-bg{
+        margin-left: 2% !important;
+        margin-right: 2% !important;
+    }
+
     .row {
-        margin-bottom: 6%;
+        margin-bottom: 6% !important;
     }
 
     .img-banner {
@@ -161,7 +166,7 @@ span {
 }
 
 .btn-lg {
-    padding: 1rem 4rem;
+    padding: 20px 20px;
     width: 100%;
 }
 

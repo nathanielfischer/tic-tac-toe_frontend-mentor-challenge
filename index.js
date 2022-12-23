@@ -19,6 +19,7 @@ const winningCombinations = [
     [2, 5, 8]
 ];
 
+setCookie("gameState", "player1=", 2);
 
 // --------------- "Event Listener" ---------------
 
@@ -30,6 +31,7 @@ $(".btn-game").click(function (event) {
     } else {
         nextTurn(field);
         checkWhoIsNext();
+        console.log(getCookie("gameState"));
     }
 
 });
@@ -77,13 +79,13 @@ $(".btn-game").hover(
     }, function (event) {
         //after hover
         const field = event.currentTarget.value;
-        
-        if($(".img-game").eq(field).hasClass("fieldSet")){
+
+        if ($(".img-game").eq(field).hasClass("fieldSet")) {
             //nothing
-        }else{
+        } else {
             $(".img-game").eq(field).addClass("hidden");
         }
-        
+
     }
 );
 
@@ -345,3 +347,27 @@ function checkWhoIsNext() {
 }
 
 
+// --------------- Cookie Management ---------------
+
+function setCookie(cname, cvalue, exdays) {
+    const date = new Date();
+    date.setTime(date.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    let expires = "expires=" + date.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}

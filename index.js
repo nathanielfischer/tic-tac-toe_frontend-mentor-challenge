@@ -271,6 +271,7 @@ function gameEnd(icon) {
 }
 
 function nextRound() {
+    saveGameToCookie();
     restartGame();
     toggleBanner();
     checkWhoIsNext();

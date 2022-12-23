@@ -402,13 +402,22 @@ function saveGameToCookie() {
     setCookie("statX", statX, 7);
     setCookie("statO", statO, 7);
     setCookie("statTie", statTie, 7);
+    setCookie("statCardX", $(".stats-card p")[0].innerText, 7);
+    setCookie("statCardO", $(".stats-card p")[2].innerText, 7);
 }
 
 function restoreGameFromCookie() {
     gameMode = getCookie("gameMode");
     playerO = getCookie("playerO");
     playerX = getCookie("playerX");
-    statX = getCookie("statX");
-    statO = getCookie("statO");
-    statTie = getCookie("statTie");
+    statX = Number(getCookie("statX"));
+    statO = Number(getCookie("statO"));
+    statTie = Number(getCookie("statTie"));
+
+    $(".stats-card p")[0].innerText = getCookie("statCardX");
+    $(".stats-card p")[2].innerText = getCookie("statCardO");
+
+    $(".bg-blue h2")[0].textContent = statX;
+    $(".bg-yellow h2")[0].textContent = statO;
+    $(".bg-silver h2")[0].textContent = statTie;
 }

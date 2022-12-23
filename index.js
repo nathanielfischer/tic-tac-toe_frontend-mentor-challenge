@@ -56,11 +56,15 @@ $(".new-game-cpu").click(function (event) {
 
 
 $(".btn-restart").click(function (event) {
-    restartGame();
+    // restartGame();  //only resets the current round
+    //delete cookies and reload page to start game from scratch
+    deleteCookies();
+    location.reload();
 });
 
 
 $(".btn-quit").click(function (event) {
+    deleteCookies();
     location.reload();
 });
 
@@ -279,7 +283,6 @@ function gameEnd(icon) {
     updateUiAfterGame(icon);
     toggleBanner();
     saveGameToCookie();
-    // restartGame();
 }
 
 /**
@@ -420,4 +423,15 @@ function restoreGameFromCookie() {
     $(".bg-blue h2")[0].textContent = statX;
     $(".bg-yellow h2")[0].textContent = statO;
     $(".bg-silver h2")[0].textContent = statTie;
+}
+
+function deleteCookies() {
+    setCookie("gameMode", "", -1);
+    setCookie("playerO", "", -1);
+    setCookie("playerX", "", -1);
+    setCookie("statX", "", -1);
+    setCookie("statO", "", -1);
+    setCookie("statTie", "", -1);
+    setCookie("statCardX", "", -1);
+    setCookie("statCardO", "", -1);
 }

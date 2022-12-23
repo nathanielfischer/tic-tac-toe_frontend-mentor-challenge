@@ -57,7 +57,7 @@ span {
 
 .darker-span {
     filter: brightness(30%);
-  }
+}
 
 /* ----------------- IDs ----------------- */
 
@@ -89,23 +89,23 @@ span {
     }
 
     .img-banner {
-        height: auto; 
-        width: auto; 
-        max-width: 25px; 
+        height: auto;
+        width: auto;
+        max-width: 25px;
         max-height: 25px;
     }
 
-    .absolute h1{
+    .absolute h1 {
         font-size: 25px;
         margin: 4% 0 4% !important;
     }
 
-    div.absolute{
+    div.absolute {
         padding: 8% 0 10% !important;
         top: 45%;
     }
 
-    
+
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
@@ -186,14 +186,17 @@ span {
 }
 
 .btn-game {
-    height: 8rem;
-    width: 4rem;
+    height: 100%;
+    width: 100%;
+    padding: 20% 50% !important;
 }
 
 .btn-game:hover {
     content: url("./assets/icon-x-outline-hover.svg");
     background-color: #1F3641;
 }
+
+
 
 .btn-turn {
     border-radius: 0.5rem;
@@ -206,7 +209,7 @@ span {
     cursor: auto;
 }
 
-.span-turn{
+.span-turn {
     margin-right: 7px;
 }
 
@@ -257,6 +260,14 @@ span {
 .img-game {
     position: relative;
     right: 30px;
+}
+
+@media (max-width:767.98px) {
+    .img-game {
+        height: 50px;
+        width: 50px;
+        right: 25px;
+    }
 }
 
 .hidden {
@@ -313,7 +324,7 @@ div.absolute {
 .switch {
     position: relative;
     display: inline-block;
-    width: 90%;   
+    width: 90%;
     /* width: 24rem; */
     height: 4.5rem;
     margin: 5% 0;

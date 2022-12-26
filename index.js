@@ -176,7 +176,6 @@ function updateUiAfterGame(icon) {
         $(".bg-silver h2")[0].textContent = statTie;
         //Banner game tied
         removeBannerStyling()
-        console.log("tied");
         $(".line1").css("display", "none");
         $(".img-banner").css("display", "none");
         $(".span-banner")[0].innerText = "TIED";
@@ -244,7 +243,6 @@ function restartGame() {
 
 /**
  * check each winningCombination if each number is included in playerArray
- * TODO: implement winning output
  */
 function checkIfWon() {
     var someoneWon = false;
@@ -341,8 +339,8 @@ function initalizeGame(cookie) {
 
 // --------------- CPU Movement ---------------
 
-function moveCpu() {
-    cpusTurn = true;
+function moveCpuRandom() {
+    // cpusTurn = true;
     const field = Math.floor(Math.random() * (8 - 0 + 1) + 0);
 
     if ($(".img-game").eq(field).hasClass("hidden")) {
@@ -352,7 +350,19 @@ function moveCpu() {
         }, 500)
     } else {
         console.error("CPU can't select this field!");
-        moveCpu();
+        moveCpuRandom();
+    }
+}
+
+function moveCpu(field) {
+    if ($(".img-game").eq(field).hasClass("hidden")) {
+        setTimeout(() => {
+            nextTurn(field);
+            cpusTurn = false;
+        }, 500)
+    } else {
+        console.error("Intelligence error!");
+        moveCpuRandom();
     }
 }
 
@@ -361,11 +371,11 @@ function checkWhoIsNext() {
     if (!gameOver) {
         if (turn === "x") {
             if (playerX === "CPU") {
-                moveCpu();
+                cpuNextMove();
             }
         } else {
             if (playerO === "CPU") {
-                moveCpu();
+                cpuNextMove();
             }
         }
     }
@@ -434,4 +444,109 @@ function deleteCookies() {
     setCookie("statTie", "", -1);
     setCookie("statCardX", "", -1);
     setCookie("statCardO", "", -1);
+}
+
+
+
+// --------------- intelligent CPU ---------------
+
+
+function cpuNextMove() {
+    cpusTurn = true;
+    let playerArray;
+    let cpuArray;
+
+    if (playerX === "CPU") {
+        cpuArray = playerArrayX;
+        playerArray = playerArrayO;
+    } else {
+        cpuArray = playerArrayO;
+        playerArray = playerArrayX;
+    }
+
+
+    let helperVariable = 0;
+
+    // 1. check if CPU could win
+    helperVariable = checkIfPlayerCanWin(cpuArray);
+    if (helperVariable !== -1) {
+        moveCpu(helperVariable);
+    } else {
+        // 2. check if Player can win
+        helperVariable = checkIfPlayerCanWin(playerArray);
+        if (helperVariable !== -1) {
+            moveCpu(helperVariable);
+        } else {
+            // 3. check which field is free, where cpu could make the next turn
+            helperVariable = checkNextPossibleMove(cpuArray);
+            if (helperVariable !== -1) {
+                moveCpu(helperVariable);
+            } else{
+                // 4. random -> for now :)
+                moveCpuRandom();
+            }
+        }
+    }
+}
+
+
+/**
+ * Returns the field in which player could end the game with, else returns -1
+ * @param  {array} playerArray the Array of the Player or CPU to check
+ * check if player is able the end the game in the next round
+*/
+function checkIfPlayerCanWin(playerArray) {
+    let counter = 0;
+    for (const winningCombination of winningCombinations) {
+        //check if two fields match one winningCombination
+        counter = 0;
+        for (let i = 0; i < 3; i++) {
+            if (playerArray.includes(winningCombination[i])) {
+                counter += 1;
+                if (counter === 2) {
+                    //check which field is left to win the game
+                    for (let i = 0; i < 3; i++) {
+                        if (!playerArray.includes(winningCombination[i])) {
+                            //check if field isn't already set by other player
+                            if (!$(".img-game").eq(winningCombination[i]).hasClass("fieldSet")) {
+                                return winningCombination[i];
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return -1;
+}
+
+
+
+/**
+ * Returns the field in which the CPU could make the next useful move,
+ * if there is no useful move, return -1 
+ * @param  {} cpuArray the Array of the CPU
+ */
+function checkNextPossibleMove(playerArray) {
+    let counter = 0;
+    for (const subArray of winningCombinations) {
+        //check if one field matches a field of a winningCombination
+        counter = 0;
+        for (let i = 0; i < 3; i++) {
+            if (playerArray.includes(subArray[i])) {
+                //check if both fields aren't already set by the other player
+                for (let i = 0; i < 3; i++) {
+                    if (!playerArray.includes(subArray[i])) {
+                        if (!$(".img-game").eq(subArray[i]).hasClass("fieldSet")) {
+                            counter += 1;
+                            if (counter === 2) {
+                                return subArray[i];
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return -1;
 }
